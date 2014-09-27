@@ -1,4 +1,7 @@
 def clean(word):
+	ind=word.find("n't")
+	if ind!=-1:
+		return clean(word[0:ind])
 	l=list(map(chr, range(97, 123)))
 	word=word.lower()
 	ind1,ind2=0,len(word)+1
