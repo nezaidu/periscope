@@ -1,18 +1,20 @@
+#!/usr/bin/env python
 import sys
 import pysrt
 from threading import Thread
 from Queue import Queue
 import argparse
 import codecs
+import os
 from shutil import copyfile
 from parse_line import *
 done=[]
 totranslate=[]
 def parse_file(f):
+	print 'processing '+f+'...'
 	global totranslate
-	f+='.srt'
+	copyfile(f,f.split('.srt')[0]+'OLD.srt')
 	subs = pysrt.open(f,encoding='utf-8')
-	copyfile(f,'OLD'+f)
 	for i in range(len(subs)):
 		print i
 		sen=subs[i].text
@@ -47,10 +49,16 @@ def parse_file(f):
 	fl.write(s.format(*totranslate))
 	fl.close()
 #dispensed
-
+#shed
+#margate
 parser = argparse.ArgumentParser()
 parser.add_argument('mode', choices=['file','dir'],help='You can parse file or entire directory.')
-parser.add_argument('destination',help='Destination to file/directory.')
+parser.add_argument('destination',help='Destination to file/directory.',nargs='+')
 args = parser.parse_args()
 if args.mode=='file':
-	parse_file(args.destination)
+	dest=' '.join(args.destination)
+	parse_file(dest)
+else:
+	dirr=' '.join(args.destination)
+	for f in os.listdir(dirr):
+		parse_file(dirr+f)
