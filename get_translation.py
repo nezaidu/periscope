@@ -1,5 +1,5 @@
 import urllib2
-from pattern.en import parse,lemma,singularize
+from pattern.en import lemma,singularize
 
 def get(word,type,number_of_translations=4):
 	types=type.split(',')
