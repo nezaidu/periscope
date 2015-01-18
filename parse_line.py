@@ -5,7 +5,6 @@ from clean import clean
 
 
 words=[line[0:-1].lower() for line in open('dictionary.txt','r')]
-# words=['wanna','gonna']
 words.sort()
 
 def parse_line(sen,count):
