@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env/python
 import sys
 import pysrt
 from threading import Thread

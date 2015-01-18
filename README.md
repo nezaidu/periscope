@@ -1,0 +1,2 @@
+# periscope
+Subtitles adapter.
