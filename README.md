@@ -8,8 +8,7 @@ Subtitles adapter.
 Из консоли:
     
     import nltk
-    nltk.download('all')
-    nltk.download('punkt')
+    nltk.download('maxent_treebank_pos_tagger')
 
 Запуск
 ===============
